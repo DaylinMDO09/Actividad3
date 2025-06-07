@@ -55,7 +55,24 @@ namespace Actividad3LengProg3.Models
             new SelectListItem {Value = "Nocturno", Text = "Nocturno"}
         };
 
+        [Required (ErrorMessage = "Elige tu tipo de ingreso")]
+        [Display (Name = "Tipo de ingreso")]
+        public string ingresoEstudiante {get; set; }
+        public List<SelectListItem> ingresos { get; } = new List<SelectListItem>
+        {
+            new SelectListItem {Value = "Nuevo", Text = "Nuevo ingreso"},
+            new SelectListItem {Value = "Reingreso", Text = "Reingreso"},
+            new SelectListItem {Value = "Transfer", Text = "Ingreso por transferencia"},
+            new SelectListItem {Value = "DóM", Text = "Ingreso por Doctorado o Maestría"}
+        };
 
+        public bool becaEstudiante { get; set; }
+
+        [Range (0,100)]
+        public int? porcentajebecaEstudiante { get; set; }
+
+        [Range(typeof(bool), "true", "true", ErrorMessage = "Debes aceptar los términos y condiciones de la institución.")]
+        public bool tcEstudiante { get; set; }
 
     }
 }
