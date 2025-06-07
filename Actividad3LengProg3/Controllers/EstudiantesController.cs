@@ -22,5 +22,48 @@ namespace Actividad3LengProg3.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Editar(EstudianteViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                EstudianteViewModel estudianteActual = estudiantes.FirstOrDefault(e => e.matriculaEstudiante.Equals(model.matriculaEstudiante));
+
+                if (estudianteActual != null)
+                {
+                    TempData["MensajeError"] = "No existe el estudiante indicado.";
+
+                    return RedirectToAction("Index");
+                }
+
+                estudianteActual.matriculaEstudiante = model.matriculaEstudiante;
+                estudianteActual.nombreEstudiante = model.nombreEstudiante;
+                estudianteActual.carreraEstudiante = model.carreraEstudiante;
+                estudianteActual.correoEstudiante = model.correoEstudiante;
+                estudianteActual.telefonoEstudiante = model.telefonoEstudiante;
+                estudianteActual.fechaEstudiante = model.fechaEstudiante;
+                estudianteActual.generoEstudiante = model.generoEstudiante;
+                estudianteActual.turnoEstudiante = model.turnoEstudiante.ToString();
+                estudianteActual.ingresoEstudiante = model.ingresoEstudiante;
+                estudianteActual.becaEstudiante = model.becaEstudiante;
+                estudianteActual.porcentajebecaEstudiante = model.porcentajebecaEstudiante;
+
+                TempData["Mensaje"] = "Los datos del estudiante han sido editados satisfactoriamente.";
+                return RedirectToAction("Index");            
+            }
+
+           return View(model); 
+        }
+
+        public IActionResult Eliminar (string matricula) 
+        {
+            EstudianteViewModel estudiante = new EstudianteViewModel();
+            if (!ModelState.IsValid) 
+            {
+                estudiantes.Remove(estudiante);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
