@@ -29,17 +29,33 @@ namespace Actividad3LengProg3.Models
         [Required (ErrorMessage = "El correo es obligatorio")]
         [EmailAddress (ErrorMessage = "Correo inválido")]
         [Display (Name = "Correo institucional")]
-        public string correo { get; set; }
+        public string correoEstudiante { get; set; }
 
         [Phone]
         [MinLength(10)]
         [Display(Name = "Número telefónico")]
-        public string telefono { get; set; }
+        public string telefonoEstudiante { get; set; }
 
         [Required (ErrorMessage = "Debe indicar su fecha de nacimiento")]
         [DataType (DataType.Date)]
         [Display (Name = "Fecha de nacimiento")]
-        public DateTime? date { get; set; }
+        public DateTime? fechaEstudiante { get; set; }
+
+        [Required]
+        [Display (Name = "Género")]
+        public string generoEstudiante { get; set; }
+        
+        [Required (ErrorMessage = "Debes elegir un turno")]
+        [Display (Name = "Turnos")]
+        public string turnoEstudiante { get; set; }
+        public List<SelectListItem> turnos { get; } = new List<SelectListItem>
+        {
+            new SelectListItem {Value = "Matutino", Text = "Matutino"},
+            new SelectListItem {Value = "Vespertino", Text = "Vespertino"},
+            new SelectListItem {Value = "Nocturno", Text = "Nocturno"}
+        };
+
+
 
     }
 }
