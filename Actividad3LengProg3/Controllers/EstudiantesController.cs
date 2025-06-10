@@ -5,7 +5,14 @@ namespace Actividad3LengProg3.Controllers
     public class EstudiantesController : Controller
     {
         private static List<EstudianteViewModel> estudiantes = new List<EstudianteViewModel>();
-        
+
+
+        public IActionResult Index()
+        {
+            return View("Registrar");
+        }
+
+        [HttpPost]
         public IActionResult Registrar(EstudianteViewModel model) 
         {
             if (ModelState.IsValid)
