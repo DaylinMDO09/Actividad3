@@ -1,0 +1,21 @@
+﻿@{
+}
+
+@model EstudianteViewModel
+
+<h1>Registro de Estudiantes</h1>
+
+@if (TempData["Mensaje"] != null)
+{
+	<div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+<form asp-action="Registrar" method="post">
+	<div>
+		<label asp-for="nombreEstudiante"></label>
+		<input asp-for="nombreEstudiante" class="form-control" />
+		<span asp-validation-for="nombreEstudiante" class="text-danger"></span>
+	</div>
+
+
+</form>

@@ -9,17 +9,17 @@ namespace Actividad3LengProg3.Controllers
         [HttpGet]                
         public IActionResult Index()
         {
-            return View();
+           return View();
         }
 
-        [HttpPost]
+        
         public IActionResult Registrar(EstudianteViewModel model) 
         {
             if (ModelState.IsValid)
             {
                 estudiantes.Add(model);
                 TempData["Mensaje"] = "Estudiante registrado correctamente.";
-                return RedirectToAction("Index");
+                return RedirectToAction("Registrar");
             }
 
             return View(model);
