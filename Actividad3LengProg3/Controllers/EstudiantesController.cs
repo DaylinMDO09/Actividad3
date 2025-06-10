@@ -19,10 +19,9 @@ namespace Actividad3LengProg3.Controllers
             {
                 estudiantes.Add(model);
                 TempData["Mensaje"] = "Estudiante registrado correctamente.";
-                return RedirectToAction("Lista");
             }
 
-            return View(model);
+            return View("Index", estudiantes);
         }
 
         [HttpPost]
