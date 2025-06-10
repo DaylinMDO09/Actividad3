@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 namespace Actividad3LengProg3.Models
 {
     public class EstudianteViewModel
@@ -69,6 +70,7 @@ namespace Actividad3LengProg3.Models
         [Display (Name ="¿Eres becado?")]
         public bool becaEstudiante { get; set; }
 
+        [Display (Name ="Porcentaje de la beca (en caso de tener beca): ")]
         [Range (0,100)]
         public int? porcentajebecaEstudiante { get; set; }
 

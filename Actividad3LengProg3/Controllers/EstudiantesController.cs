@@ -19,9 +19,10 @@ namespace Actividad3LengProg3.Controllers
             {
                 estudiantes.Add(model);
                 TempData["Mensaje"] = "Estudiante registrado correctamente.";
+                return RedirectToAction("Lista");
             }
 
-            return View("Index", estudiantes);
+            return View("Index", model);
         }
 
         [HttpPost]
@@ -64,13 +65,33 @@ namespace Actividad3LengProg3.Controllers
             {
                 estudiantes.Remove(estudiante);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Lista");
         }
 
         [HttpGet]
         public IActionResult Lista()
         {
             return View(estudiantes);
+        }
+
+        [HttpGet]
+        public IActionResult Editar(string matricula) 
+        {
+            if (string.IsNullOrEmpty(matricula))
+            {
+                TempData["MensajeError"] = "La matricula de este estudiante no existe.";
+                return RedirectToAction("Lista");
+            }
+
+            EstudianteViewModel estudianteActual = estudiantes.FirstOrDefault(e => e.matriculaEstudiante.Equals(matricula));
+
+            if (estudianteActual == null)
+            {
+                TempData["MensajeError"] = "El estudiante indicado no existe.";
+                return RedirectToAction("Lista");
+            }
+
+            return View(estudianteActual);
         }
     }
 }
