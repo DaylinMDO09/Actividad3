@@ -66,12 +66,14 @@ namespace Actividad3LengProg3.Models
             new SelectListItem {Value = "DóM", Text = "Ingreso por Doctorado o Maestría"}
         };
 
+        [Display (Name ="¿Eres becado?")]
         public bool becaEstudiante { get; set; }
 
         [Range (0,100)]
         public int? porcentajebecaEstudiante { get; set; }
 
         [Range(typeof(bool), "true", "true", ErrorMessage = "Debes aceptar los términos y condiciones de la institución.")]
+        [Display (Name = "Acepto los terminos y condiciones.")]
         public bool tcEstudiante { get; set; }
 
     }

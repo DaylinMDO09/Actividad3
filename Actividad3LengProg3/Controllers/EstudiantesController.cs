@@ -9,7 +9,7 @@ namespace Actividad3LengProg3.Controllers
 
         public IActionResult Index()
         {
-            return View("Registrar");
+            return View(new EstudianteViewModel());
         }
 
         [HttpPost]
@@ -19,7 +19,7 @@ namespace Actividad3LengProg3.Controllers
             {
                 estudiantes.Add(model);
                 TempData["Mensaje"] = "Estudiante registrado correctamente.";
-                return RedirectToAction("Registrar");
+                return RedirectToAction("Lista");
             }
 
             return View(model);
