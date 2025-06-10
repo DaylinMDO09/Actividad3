@@ -5,6 +5,8 @@ namespace Actividad3LengProg3.Controllers
     public class EstudiantesController : Controller
     {
         private static List<EstudianteViewModel> estudiantes = new List<EstudianteViewModel>();
+        
+        [HttpGet]                
         public IActionResult Index()
         {
             return View();
@@ -34,7 +36,7 @@ namespace Actividad3LengProg3.Controllers
                 {
                     TempData["MensajeError"] = "No existe el estudiante indicado.";
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Lista");
                 }
 
                 estudianteActual.matriculaEstudiante = model.matriculaEstudiante;
@@ -50,7 +52,7 @@ namespace Actividad3LengProg3.Controllers
                 estudianteActual.porcentajebecaEstudiante = model.porcentajebecaEstudiante;
 
                 TempData["Mensaje"] = "Los datos del estudiante han sido editados satisfactoriamente.";
-                return RedirectToAction("Index");            
+                return RedirectToAction("Lista");            
             }
 
            return View(model); 
@@ -64,6 +66,12 @@ namespace Actividad3LengProg3.Controllers
                 estudiantes.Remove(estudiante);
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult Lista()
+        {
+            return View(estudiantes);
         }
     }
 }
