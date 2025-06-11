@@ -6,7 +6,7 @@ namespace Actividad3LengProg3.Controllers
     {
         private static List<EstudianteViewModel> estudiantes = new List<EstudianteViewModel>();
 
-
+        
         public IActionResult Index()
         {
             return View(new EstudianteViewModel());
@@ -60,11 +60,9 @@ namespace Actividad3LengProg3.Controllers
 
         public IActionResult Eliminar (string matricula) 
         {
-            EstudianteViewModel estudiante = new EstudianteViewModel();
-            if (!ModelState.IsValid) 
-            {
-                estudiantes.Remove(estudiante);
-            }
+            var estudiante = estudiantes.FirstOrDefault(e => e.matriculaEstudiante == matricula);
+            if (estudiante != null) estudiantes.Remove(estudiante);
+            TempData["Mensaje"] = "Estudiante eliminado satisfactoriamente.";
             return RedirectToAction("Lista");
         }
 

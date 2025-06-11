@@ -32,7 +32,7 @@ namespace Actividad3LengProg3.Models
         [Display (Name = "Correo institucional")]
         public string correoEstudiante { get; set; }
 
-        [Phone]
+        [Phone (ErrorMessage = "El número telefónico es obligatorio")]
         [MinLength(10)]
         [Display(Name = "Número telefónico")]
         public string telefonoEstudiante { get; set; }
@@ -75,7 +75,7 @@ namespace Actividad3LengProg3.Models
         public int? porcentajebecaEstudiante { get; set; }
 
         [Range(typeof(bool), "true", "true", ErrorMessage = "Debes aceptar los términos y condiciones de la institución.")]
-        [Display (Name = "Acepto los terminos y condiciones.")]
+        [Display(Name = "Acepto los terminos y condiciones.")]
         public bool tcEstudiante { get; set; }
 
     }

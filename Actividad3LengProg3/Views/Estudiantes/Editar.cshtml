@@ -1,17 +1,13 @@
-﻿@{
-}
+﻿@model EstudianteViewModel
 
+<h1>Edición de datos del estudiante:</h1>
 
-@model EstudianteViewModel
-
-<h1>Registro de Estudiantes</h1>
-
-@if (TempData["Mensaje"] != null)
+@if (TempData["MensajeError"] != null)
 {
-	<div class="alert alert-success">@TempData["Mensaje"]</div>
+	<div class="alert alert-success">@TempData["MensajeError"]</div>
 }
 
-<form asp-action="Registrar" method="post">
+<form asp-action="Editar" method="post">
 	<div>
 		<label asp-for="nombreEstudiante"></label>
 		<input asp-for="nombreEstudiante" class="form-control" />
@@ -59,24 +55,23 @@
 	</div>
 	<div>
 		<label asp-for="becaEstudiante"></label>
-		<input asp-for="becaEstudiante" class="form-check-input" />
-		<span asp-validation-for="becaEstudiante"></span>
+		<input type="checkbox" asp-for="becaEstudiante" />
+		<span asp-validation-for="becaEstudiante" class="text-danger"></span>
 	</div>
 	<div>
 		<label asp-for="porcentajebecaEstudiante"></label>
 		<input asp-for="porcentajebecaEstudiante" class="form-control" />
 		<span asp-validation-for="porcentajebecaEstudiante" class="text-danger"></span>
 	</div>
-	<div class="form-check">
+	<div>
 		<label asp-for="tcEstudiante"></label>
 		<input type="checkbox" asp-for="tcEstudiante" />
-		<span asp-validation-for="tcEstudiante" class="text-danger"></span>
+		<span asp-validation-for="tcEstudiante"></span>
 	</div>
-	
 	<div class="row">
 		<div class="col-6">
-		<br />
-			<button type="submit" class="btn btn-primary" size="30px">Registrar</button>
+			<br />
+			<button type="submit" class="btn btn-primary" size="30px">Editar</button>
 			<a href="/Estudiantes/Lista" class="btn btn-secondary">Lista de estudiantes registrados</a>
 		</div>
 	</div>
